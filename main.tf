@@ -1,18 +1,12 @@
-# INSTALL REQUIRED PROVIDERS.
+resource "google_storage_bucket" "terraform_backend" {
+  name                        = var.bucket-name != null ? var.bucket-name : "${var.project-id}-terraform-state"
+  project                     = var.project-id
+  force_destroy               = false
+  location                    = var.location
+  storage_class               = "MULTI_REGIONAL"
+  uniform_bucket_level_access = true
 
-terraform {
-  required_providers {
-    google = {
-      source  = "hashicorp/google"
-      version = "3.60.0"
-    }
+  versioning {
+    enabled = true
   }
-}
-
-provider "google" {
-  # Configuration options
-}
-
-provider "google-beta" {
-  # Configuration options
 }
