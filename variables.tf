@@ -12,4 +12,5 @@ variable "bucket-name" {
 variable "location" {
   type        = string
   description = "Global region to create the bucket, e.g. US"
+  default     = "US"
 }
